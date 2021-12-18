@@ -4,40 +4,49 @@ LABEL maintainer="Michael Buluma"
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-ENV container docker
+ENV pip_packages "ansible"
 
-# Enable apt repositories.
-RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list
-
-# Enable systemd.
-RUN apt-get update ; \
-    apt-get install -y systemd systemd-sysv ; \
-    apt-get clean ; \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* ; \
-    cd /lib/systemd/system/sysinit.target.wants/ ; \
-    ls | grep -v systemd-tmpfiles-setup | xargs rm -f $1 ; \
-    rm -f /lib/systemd/system/multi-user.target.wants/* ; \
-    rm -f /etc/systemd/system/*.wants/* ; \
-    rm -f /lib/systemd/system/local-fs.target.wants/* ; \
-    rm -f /lib/systemd/system/sockets.target.wants/*udev* ; \
-    rm -f /lib/systemd/system/sockets.target.wants/*initctl* ; \
-    rm -f /lib/systemd/system/basic.target.wants/* ; \
-    rm -f /lib/systemd/system/anaconda.target.wants/* ; \
-    rm -f /lib/systemd/system/plymouth* ; \
-    rm -f /lib/systemd/system/systemd-update-utmp*
-
-# Install requirements.
+# Install dependencies.
 RUN apt-get update \
-    && apt-get dist-upgrade -y \
-    && apt-get install -y \
-    python3 \
-    sudo \
-    gnupg \
-    python3-apt \
-    apt-transport-https \
-    ca-certificates \
-    && apt-get clean
+    && apt-get install -y --no-install-recommends \
+       apt-utils \
+       build-essential \
+       locales \
+       libffi-dev \
+       libssl-dev \
+       libyaml-dev \
+       python3-dev \
+       python3-setuptools \
+       python3-pip \
+       python3-yaml \
+       software-properties-common \
+       rsyslog systemd systemd-cron sudo iproute2 \
+    && apt-get clean \
+    && rm -Rf /var/lib/apt/lists/* \
+    && rm -Rf /usr/share/doc && rm -Rf /usr/share/man
 
-VOLUME [ "/sys/fs/cgroup" ]
+# hadolint ignore=DL3009
+RUN sed -i 's/^\($ModLoad imklog\)/#\1/' /etc/rsyslog.conf
 
+# Fix potential UTF-8 errors with ansible-test.
+RUN locale-gen en_US.UTF-8
+
+# Install Ansible via Pip. Avoid use of cache directory with pip.
+RUN pip3 install --no-cache-dir $pip_packages
+
+# hadolint ignore=DL3045
+COPY initctl_faker .
+RUN chmod +x initctl_faker && rm -fr /sbin/initctl && ln -s /initctl_faker /sbin/initctl
+
+# Install Ansible inventory file.
+RUN mkdir -p /etc/ansible
+# hadolint ignore=ShellCheck-SC2028
+RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
+
+# Remove unnecessary getty and udev targets that result in high CPU usage when using
+# multiple containers with Molecule (https://github.com/ansible/molecule/issues/1104)
+RUN rm -f /lib/systemd/system/systemd*udev* \
+  && rm -f /lib/systemd/system/getty.target
+
+VOLUME ["/sys/fs/cgroup", "/tmp", "/run"]
 CMD ["/lib/systemd/systemd"]
