@@ -1,7 +1,7 @@
 # Ubuntu 22.04 Devel (Jammy Jellyfish) Ansible Test Image
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9e63fd25e79042ae87cc103e7aa28842)](https://app.codacy.com/gh/buluma/docker-ubuntu2204-ansible?utm_source=github.com&utm_medium=referral&utm_content=buluma/docker-ubuntu2204-ansible&utm_campaign=Badge_Grade_Settings)
-[![Build and Push Container](https://github.com/buluma/docker-ubuntu2204-ansible/actions/workflows/build-image.yml/badge.svg?branch=main)](https://github.com/buluma/docker-ubuntu2204-ansible/actions/workflows/build-image.yml) ![Docker Pulls](https://img.shields.io/docker/pulls/buluma/docker-ubuntu2204-ansible)
+[![Build and Push Container](https://github.com/buluma/docker-ubuntu2204-ansible/actions/workflows/build-image.yml/badge.svg?branch=main)](https://github.com/buluma/docker-ubuntu2204-ansible/actions/workflows/build-image.yml) ![Docker Pulls](https://img.shields.io/docker/pulls/buluma/docker-ubuntu2204-ansible) [![CodeFactor](https://www.codefactor.io/repository/github/buluma/docker-ubuntu2204-ansible/badge)](https://www.codefactor.io/repository/github/buluma/docker-ubuntu2204-ansible) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/a38fda42798f48be9833e4241c04519d)](https://www.codacy.com/gh/buluma/docker-ubuntu2204-ansible/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=buluma/docker-ubuntu2204-ansible&amp;utm_campaign=Badge_Grade)
 
 Ubuntu 22.04 Devel (Jammy Jellyfish) Docker container for Ansible playbook and role testing.
 
