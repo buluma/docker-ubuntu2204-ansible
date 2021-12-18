@@ -1,6 +1,6 @@
 # Ubuntu 22.04 Devel (Jammy Jellyfish) Ansible Test Image
 
-[![Build and Push Container](https://github.com/buluma/docker-ubuntu2204-ansible/actions/workflows/build-image.yml/badge.svg?branch=main)](https://github.com/buluma/docker-ubuntu2204-ansible/actions/workflows/build-image.yml) [![Docker pulls](https://img.shields.io/docker/pulls/buluma/docker-ubuntu2104-ansible)](https://hub.docker.com/r/buluma/docker-ubuntu2104-ansible/)
+[![Build and Push Container](https://github.com/buluma/docker-ubuntu2204-ansible/actions/workflows/build-image.yml/badge.svg?branch=main)](https://github.com/buluma/docker-ubuntu2204-ansible/actions/workflows/build-image.yml) ![Docker Pulls](https://img.shields.io/docker/pulls/buluma/docker-ubuntu2204-ansible)
 
 Ubuntu 22.04 Devel (Jammy Jellyfish) Docker container for Ansible playbook and role testing.
 
