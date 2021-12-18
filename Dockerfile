@@ -1,6 +1,6 @@
-FROM ubuntu:22.04
+FROM ubuntu:jammy
 
-LABEL maintainer="buluma"
+LABEL maintainer="Michael Buluma"
 
 ARG DEBIAN_FRONTEND=noninteractive
 
