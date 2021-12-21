@@ -1,4 +1,4 @@
-FROM ubuntu:jammy
+FROM buluma/ubuntu:jammy
 
 LABEL maintainer="Michael Buluma"
 
