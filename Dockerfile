@@ -12,6 +12,11 @@ RUN apt-get update \
        apt-utils \
        build-essential \
        locales \
+       gnupg \
+       bison \
+       tcpdump \
+       net-tools \
+       libelf-dev \
        libffi-dev \
        libssl-dev \
        libyaml-dev \
