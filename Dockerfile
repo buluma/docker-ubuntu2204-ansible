@@ -16,6 +16,7 @@ RUN apt-get update \
        bison \
        tcpdump \
        net-tools \
+       bash-completion \
        telnet \
        libelf-dev \
        libffi-dev \
