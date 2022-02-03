@@ -23,6 +23,7 @@ RUN apt-get update \
        curl \
        debian-archive-keyring \
        openssh-server \
+       ruby \
        libelf-dev \
        libffi-dev \
        libssl-dev \
