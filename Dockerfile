@@ -16,6 +16,7 @@ RUN apt-get update \
        bison \
        tcpdump \
        net-tools \
+       telnet \
        libelf-dev \
        libffi-dev \
        libssl-dev \
