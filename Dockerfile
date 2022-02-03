@@ -22,6 +22,7 @@ RUN apt-get update \
        telnet \
        curl \
        debian-archive-keyring \
+       openssh-server \
        libelf-dev \
        libffi-dev \
        libssl-dev \
