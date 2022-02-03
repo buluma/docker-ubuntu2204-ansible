@@ -21,6 +21,7 @@ RUN apt-get update \
        bash-completion \
        telnet \
        curl \
+       debian-archive-keyring \
        libelf-dev \
        libffi-dev \
        libssl-dev \
