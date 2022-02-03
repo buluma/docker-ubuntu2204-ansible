@@ -8,7 +8,8 @@ ENV pip_packages "ansible"
 
 # Install dependencies.
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
+    # && apt-get install -y --no-install-recommends \
+    && apt-get install -y \
        apt-utils \
        build-essential \
        locales \
@@ -18,6 +19,7 @@ RUN apt-get update \
        net-tools \
        bash-completion \
        telnet \
+       curl \
        libelf-dev \
        libffi-dev \
        libssl-dev \
