@@ -17,6 +17,7 @@ RUN apt-get update \
        bison \
        tcpdump \
        net-tools \
+       screen \
        bash-completion \
        telnet \
        curl \
