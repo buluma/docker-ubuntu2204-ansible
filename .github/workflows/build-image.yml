@@ -7,8 +7,17 @@ on:
     branches:
       - main
   schedule:
-    - cron: '40 * * * *'
+    - cron: '40 5/3 * * *'
   workflow_dispatch:
+    inputs:
+      debug:
+        type: boolean
+        required: false
+        default: 'false'
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
 
 jobs:
   # Test the image builds and works correctly.
