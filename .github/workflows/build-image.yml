@@ -7,7 +7,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '40 5/3 * * *'
+    - cron: '40 5 * * 2'
   workflow_dispatch:
     inputs:
       debug:
