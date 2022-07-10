@@ -1,4 +1,4 @@
-FROM buluma/ubuntu:jammy
+FROM buluma/ubuntu:22.04
 
 LABEL maintainer="Michael Buluma"
 LABEL build_date="2022-06-07"
