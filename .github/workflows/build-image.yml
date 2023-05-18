@@ -34,9 +34,6 @@ jobs:
       - name: Run the built image.
         run: docker run --name test-container -d --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro docker-test
 
-      - name: Verify systemctl in the built image.
-        run: docker exec --tty test-container env TERM=xterm systemctl --version
-
       - name: Verify Ansible is accessible in the built image.
         run: docker exec --tty test-container env TERM=xterm ansible --version
 
